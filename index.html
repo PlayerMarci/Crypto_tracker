@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptocurrency Tracker</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <div class="header">
+    <div class="theme-toggle">
+      <img class="light-mode" src="https://img.icons8.com/ios-filled/100/000000/sun.png" alt="Light Mode">
+      <img class="dark-mode hidden" src="https://img.icons8.com/ios-filled/100/000000/crescent-moon.png" alt="Dark Mode">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="text-center mt-4 mb-4">Cryptocurrency Prices</h1>
+        <div class="table-responsive">
+          <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">24h Change</th>
+              </tr>
+            </thead>
+            <tbody id="crypto-table">
+              <!-- Crypto data will be inserted here dynamically -->
+            </tbody>
+          </table>
+        </div>
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+          {
+            "symbols": [
+              [
+                "BITSTAMP:BTCUSD|1D"
+              ],
+              [
+                "BINANCE:ETHUSD|1D"
+              ],
+              [
+                "COINBASE:SOLUSD|1D"
+              ],
+              [
+                "FX:USDHUF|1D"
+              ],
+              [
+                "BINANCE:DOGEUSDT|1D"
+              ]
+            ],
+            "chartOnly": false,
+            "width": 550,
+            "height": 400,
+            "locale": "en",
+            "colorTheme": "dark",
+            "autosize": false,
+            "showVolume": false,
+            "showMA": false,
+            "hideDateRanges": false,
+            "hideMarketStatus": false,
+            "hideSymbolLogo": false,
+            "scalePosition": "right",
+            "scaleMode": "Normal",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+            "fontSize": "10",
+            "noTimeScale": false,
+            "valuesTracking": "1",
+            "changeMode": "price-and-percent",
+            "chartType": "area",
+            "maLineColor": "#2962FF",
+            "maLineWidth": 1,
+            "maLength": 9,
+            "lineWidth": 2,
+            "lineType": 0,
+            "dateRanges": [
+              "1d|1",
+              "1m|30",
+              "3m|60",
+              "12m|1D",
+              "60m|1W",
+              "all|1M"
+            ]
+          }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+    </div>
+    <div class="row about-section">
+      <div class="col-md-8 offset-md-2">
+        <h2>About the Site</h2>
+        <p>Investing in cryptocurrencies can be a lucrative endeavor, but it's important to approach it with caution and diligence. Cryptocurrencies offer the potential for high returns, but they also come with significant risks due to their volatile nature.</p>
+        <p>One of the key advantages of cryptocurrencies is their decentralization, which means they are not controlled by any single government or financial institution. This can provide greater freedom and autonomy for users, as well as protection against inflation and government manipulation.</p>
+        <p>On the other hand, traditional fiat currencies are subject to inflation and can be devalued by central banks printing more money. Cryptocurrencies, such as Bitcoin, have a finite supply, which can help protect against inflation and preserve value over time.</p>
+        <p>However, it's essential to do thorough research and understand the risks before investing in cryptocurrencies. Prices can be highly volatile, and there is always the risk of losing your investment.</p>
+      </div>
+    </div>
+    <!-- YouTube Video -->
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/q00K1vy2c_E?si=IXRTabchbnT6W7zY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Wealth Calculator Section -->
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h2 class="text-center mt-5 mb-4">Wealth Calculator</h2>
+        <form id="wealth-form">
+          <div class="form-group">
+            <label for="first-deposit">First Deposit ($)</label>
+            <input type="number" class="form-control" id="first-deposit" placeholder="Enter first deposit">
+          </div>
+          <div class="form-group">
+            <label for="monthly-deposit">Monthly Deposit ($)</label>
+            <input type="number" class="form-control" id="monthly-deposit" placeholder="Enter monthly deposit">
+          </div>
+          <div class="form-group">
+            <label for="time-period">Time Period (years)</label>
+            <input type="number" class="form-control" id="time-period" placeholder="Enter time period">
+          </div>
+          <div class="form-group">
+            <label for="annual-yield">Annual Percentage Yield (%)</label>
+            <input type="number" class="form-control" id="annual-yield" placeholder="Enter annual percentage yield">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Calculate</button>
+        </form>
+        <div class="chart-container mt-4">
+          <canvas id="wealth-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Cryptocurrency Tracker</p>
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/twitter--v1.png" alt="Twitter"></a>
+        <a href="#" target="_blank"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new--v1.png" alt="Instagram"></a>
+      </div>
+      <p>Email us at: crypto@tracker.mail.com</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js">
+     
+  </script>
+</body>
+</html>
